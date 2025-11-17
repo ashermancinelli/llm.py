@@ -1,0 +1,20 @@
+[project]
+name = "llm.py"
+version = "0.1.0"
+dependencies = [
+    "numpy",
+    "torch",
+    "tqdm",
+    "transformers",
+    "tiktoken",
+    "numba-cuda[cu12]",
+    "cuda-cccl[cu12]",
+    "cupy-cuda12x",
+    "nvmath-python",
+    "pynvjitlink",
+]
+
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
