@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 import argparse
 import math
 import os
 import struct
 import time
 
-import cuda.cooperative.experimental as cudax
+import cuda.coop as cudax
 import cupy
 import cupyx
 import numba.cuda
@@ -13,7 +14,6 @@ import nvmath.linalg
 from cuda import cuda, cudart, nvrtc
 from nvmath.bindings import cublas
 from nvmath.bindings import cublasLt as cublaslt
-from pynvjitlink import patch
 
 
 class CublasState:
@@ -55,7 +55,6 @@ def checkCudaErrors(result):
 --------------------- FORWARD KERNELS ---------------------
 """
 
-patch.patch_numba_linker(lto=True)
 cx_warp_sum = cudax.warp.sum(numba.float32)
 sum_storage_bytes = cx_warp_sum.temp_storage_bytes
 cx_warp_files = cx_warp_sum.files
